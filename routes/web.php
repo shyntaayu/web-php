@@ -4,7 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard-sijam');
+    // return view('welcome');
+});
+
+Route::get('/tentang', function () {
+    return view('tentang');
+});
+
+Route::get('/kontak', function () {
+    return view('kontak');
 });
 
 Route::get('/dashboard', function () {
