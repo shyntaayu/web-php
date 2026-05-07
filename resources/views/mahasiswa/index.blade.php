@@ -9,6 +9,15 @@
     <a href="{{ route('mahasiswa.create') }}" class="btn-primary">
         + Tambah Mahasiswa
     </a>
+
+    <form action="{{ route('mahasiswa.restore-all') }}" method="POST" style="display: inline-block; margin-left: 10px;">
+        @csrf
+        <button type="submit" class="btn-secondary"
+            style="background-color: #22c55e; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;"
+            onclick="return confirm('Apakah Anda yakin ingin memulihkan SEMUA data yang terhapus?')">
+            Pulihkan Semua Data
+        </button>
+    </form>
 </div>
 
 <table class="tabel-data">
@@ -33,7 +42,7 @@
             <td>
                 <a href="{{ route('mahasiswa.edit', $mhs->id) }}">Edit</a>
                 <form action="{{ route('mahasiswa.destroy', $mhs->id) }}"
-                    method="POST" style="display:inline">
+                    method="DELETE" style="display:inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Hapus</button>
@@ -55,7 +64,7 @@
 @push('scripts')
 <script>
     // Konfirmasi sebelum hapus
-    document.querySelectorAll('form[method=POST]').forEach(form => {
+    document.querySelectorAll('form[method=DELETE]').forEach(form => {
         form.addEventListener('submit', e => {
             if (!confirm('Yakin hapus data ini?')) e.preventDefault();
         });

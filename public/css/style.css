@@ -1,0 +1,164 @@
+/* Reset & Dasar */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container Utama bergaya Card */
+.form-container,
+.table-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+h2 {
+    margin-top: 0;
+    color: #1f2937;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Formulir */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #4b5563;
+}
+
+.required {
+    color: #ef4444;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition:
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Error Validasi */
+.is-invalid {
+    border-color: #ef4444 !important;
+}
+
+.error-msg {
+    color: #ef4444;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Tombol */
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+button,
+.btn-primary,
+.btn-secondary,
+.btn-success {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+}
+
+.btn-secondary {
+    background-color: #6b7280;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #4b5563;
+}
+
+.btn-success {
+    background-color: #10b981;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #059669;
+}
+
+/* Tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Notifikasi Sukses */
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border: 1px solid #a7f3d0;
+}

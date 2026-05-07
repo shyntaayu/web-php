@@ -18,12 +18,14 @@
             /* Agar tidak tertutup fixed navbar */
         }
     </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
 
     <!-- 2. Sisipkan Partial Navbar -->
     @include('partials.navbar-sijam')
+    @include('layouts.navigation')
 
     <!-- 4. Flash Session Message -->
     @if(session('success'))

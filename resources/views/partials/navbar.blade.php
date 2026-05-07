@@ -7,9 +7,16 @@
 
         {{-- Link ke Index Mahasiswa --}}
         <li><a href="{{ route('mahasiswa.index') }}">Data Mahasiswa</a></li>
-
-        <li><a href="#">Profil</a></li>
+        @auth
+        <li><a href="#">{{ auth()->user()->name }}</a></li>
+        <a href="{{ route('profile.edit') }}">Profil</a>
         <li><a href="#">Keluar</a></li>
+
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">Keluar</button>
+        </form>
+        @endauth
     </ul>
 </nav>
 

@@ -1,41 +1,31 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', function () {
-    return view('dashboard-sijam');
-    // return view('welcome');
-});
-
-Route::get('/tentang', function () {
-    return view('tentang');
-});
-
-Route::get('/kontak', function () {
-    return view('kontak');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard'); // Pastikan file resources/views/dashboard.blade.php ada
-})->name('dashboard');
+    return view('dashboard-sijam');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-Route::view('/contoh', 'contoh', [
-    'judul' => "Contoh Blade Template",
-    'mahasiswa' => (object) [
-        'nama' => 'Budi Sudarsono',
-        'aktif' => false,
-        'nim' => '2024001',
-        'ipk' => 3.85
-    ],
-    'nama' => null, // Untuk contoh null coalescing
-    'ipk' => 3.85, // Untuk contoh kondisi badge
-    'foto' => "avatar.png", // Untuk contoh @isset
-    'daftar' => ['Data 1', 'Data 2', 'ada'], // Untuk contoh @empty
-    'mahasiswas' => [], // Untuk contoh looping kosong
-    'items' => ['Buku', 'Pena', 'Penggaris'], // Untuk contoh looping
-    'kontenHTML' => '<strong>Ini konten HTML yang dirender!</strong>'
-]);
+    Route::get('/tentang', function () {
+        return view('tentang');
+    });
 
-Route::resource('mahasiswa', MahasiswaController::class);
+    Route::get('/kontak', function () {
+        return view('kontak');
+    });
+    Route::resource('mahasiswa', MahasiswaController::class);
+    Route::post('/mahasiswa/restore-all', [MahasiswaController::class, 'restoreAll'])->name('mahasiswa.restore-all');
+});
+
+require __DIR__ . '/auth.php';

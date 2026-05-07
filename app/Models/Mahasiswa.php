@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Hash;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 
 class Mahasiswa extends Model
 {
@@ -80,4 +84,20 @@ class Mahasiswa extends Model
         return $query->where('ipk', '>=', 3.5);
     }
     // Penggunaan: Mahasiswa::aktif()->cumlaude()->get();
+
+    protected static function booted()
+    {
+        // Event "creating" dipicu SEBELUM data mahasiswa masuk ke database
+        static::creating(function ($mahasiswa) {
+            // 1. Otomatis buatkan User baru
+            $user = User::create([
+                'name'     => $mahasiswa->nama,
+                'email'    => $mahasiswa->email,
+                'password' => Hash::make('password123'), // Password default
+            ]);
+
+            // 2. Isi user_id mahasiswa dengan ID user yang baru saja dibuat
+            $mahasiswa->user_id = $user->id;
+        });
+    }
 }
