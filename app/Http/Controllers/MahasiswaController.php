@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -35,48 +36,71 @@ class MahasiswaController extends Controller
         return view('mahasiswa.index', compact('mahasiswas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // GET /mahasiswa — tampilkan semua data
+    // public function index()
+    // {
+    //     $mahasiswas = Mahasiswa::latest()->paginate(10);
+    //     return view('mahasiswa.index', compact('mahasiswas'));
+    // }
+
+    // GET /mahasiswa/create — tampilkan form tambah
     public function create()
     {
-        //
+        return view('mahasiswa.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // POST /mahasiswa — simpan data baru
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nim'     => 'required|unique:mahasiswas|max:15',
+            'nama'    => 'required|min:3|max:100',
+            'email'   => 'required|email|unique:mahasiswas',
+            'jurusan' => 'required',
+            'ipk'     => 'nullable|numeric|min:0|max:4',
+        ]);
+
+        Mahasiswa::create($validated);
+
+        return redirect()->route('mahasiswa.index')
+            ->with('success', 'Mahasiswa berhasil ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id) {}
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    // GET /mahasiswa/{id} — tampilkan detail
+    public function show(Mahasiswa $mahasiswa)
     {
-        //
+        return view('mahasiswa.show', compact('mahasiswa'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // GET /mahasiswa/{id}/edit — tampilkan form edit
+    public function edit(Mahasiswa $mahasiswa)
     {
-        //
+
+        return view('mahasiswa.edit', compact('mahasiswa'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    // PUT /mahasiswa/{id} — update data
+    public function update(Request $request, Mahasiswa $mahasiswa)
     {
-        //
+        $validated = $request->validate([
+            'nim'     => 'required|max:15|unique:mahasiswas,nim,' . $mahasiswa->id,
+            'nama'    => 'required|min:3|max:100',
+            'email'   => 'required|email|unique:mahasiswas,email,' . $mahasiswa->id,
+            'jurusan' => 'required',
+            'ipk'     => 'nullable|numeric|min:0|max:4',
+        ]);
+
+        $mahasiswa->update($validated);
+
+        return redirect()->route('mahasiswa.index')
+            ->with('success', 'Data berhasil diperbarui!');
+    }
+
+    // DELETE /mahasiswa/{id} — hapus data
+    public function destroy(Mahasiswa $mahasiswa)
+    {
+        $mahasiswa->delete();
+        return redirect()->route('mahasiswa.index')
+            ->with('success', 'Data berhasil dihapus!');
     }
 }

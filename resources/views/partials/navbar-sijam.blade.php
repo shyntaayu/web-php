@@ -8,6 +8,7 @@
             <li><a href="{{ url('/') }}" class="nav-link">Dashboard</a></li>
             <li><a href="{{ url('/tentang') }}" class="nav-link">Tentang</a></li>
             <li><a href="{{ url('/kontak') }}" class="nav-link">Kontak</a></li>
+            <li><a href="{{ url('/mahasiswa') }}" class="nav-link">Mahasiswa</a></li>
         </ul>
     </nav>
 </header>
