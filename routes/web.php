@@ -5,7 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard-sijam');
+});
+
+Route::get('/tentang', function () {
+    return view('tentang');
+});
+
+Route::get('/kontak', function () {
+    return view('kontak');
 });
 
 Route::get('/dashboard', function () {
@@ -17,13 +25,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/tentang', function () {
-        return view('tentang');
-    });
-
-    Route::get('/kontak', function () {
-        return view('kontak');
-    });
     Route::resource('mahasiswa', MahasiswaController::class);
     Route::post('/mahasiswa/restore-all', [MahasiswaController::class, 'restoreAll'])->name('mahasiswa.restore-all');
 });

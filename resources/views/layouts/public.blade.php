@@ -7,24 +7,14 @@
     <title>@yield('title', 'SIJAM - Sistem Informasi Jadwal Mengajar')</title>
     <!-- Asumsi file CSS ada di folder public/css/style-proyek.css -->
     <link rel="stylesheet" href="{{ asset('css/style-proyek.css') }}">
-    <style>
-        .alert-success {
-            background-color: #22c55e;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            margin-top: 70px;
-            /* Agar tidak tertutup fixed navbar */
-        }
-    </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('css/style-tasklist.css') }}">
+    @stack('styles')
 </head>
 
 <body>
 
     <!-- 2. Sisipkan Partial Navbar -->
-    @include('partials.navbar-sijam')
     @include('layouts.navigation')
 
     <!-- 4. Flash Session Message -->

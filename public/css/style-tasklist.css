@@ -1,0 +1,279 @@
+/* ==========================================================================
+   Gaya Global & Tipografi
+   ========================================================================== */
+body {
+    font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #334155;
+    /* Abu-abu tua yang lebih lembut dari hitam pekat */
+    background-color: #f8fafc;
+    /* Latar belakang halaman abu-abu sangat muda */
+}
+
+/* ==========================================================================
+   Page Header
+   ========================================================================== */
+.page-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 8px;
+}
+
+.page-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0;
+    margin-right: auto;
+    /* Mendorong tombol ke kanan */
+}
+
+/* ==========================================================================
+   Tombol (Buttons)
+   ========================================================================== */
+/* Reset dasar untuk link yang bertindak seperti tombol */
+a[class^="btn-"],
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+    /* Biru modern */
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+/* Mempercantik tombol yang ada di dalam tabel (Edit & Hapus) */
+.tabel-data td a,
+.tabel-data td button {
+    padding: 6px 12px;
+    font-size: 0.8125rem;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+/* Tombol Edit */
+.tabel-data td a {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
+
+.tabel-data td a:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+
+/* Tombol Hapus */
+.tabel-data td button {
+    background-color: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fecaca;
+}
+
+.tabel-data td button:hover {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* ==========================================================================
+   Tabel Data (Minimalis)
+   ========================================================================== */
+.tabel-data {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    /* Agar border-radius berfungsi dengan border-collapse */
+    box-shadow:
+        0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    /* Bayangan sangat tipis */
+}
+
+.tabel-data thead {
+    background-color: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.tabel-data th {
+    text-align: left;
+    padding: 7px 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tabel-data td {
+    padding: 7px 8px;
+    font-size: 0.875rem;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+/* Efek hover pada baris tabel */
+.tabel-data tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Menghilangkan border bawah pada baris terakhir */
+.tabel-data tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.main-content {
+    padding: 20px;
+    background-color: #f8fafc;
+}
+
+/* ==========================================================================
+   Form Container & Header
+   ========================================================================== */
+.form-container {
+    margin: 8px auto;
+    max-width: 600px; /* Lebar maksimal agar form tidak terlalu melebar di layar besar */
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow:
+        0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* ==========================================================================
+   Form Groups & Labels
+   ========================================================================== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+.required {
+    color: #ef4444; /* Warna merah untuk tanda bintang wajib isi */
+}
+
+/* ==========================================================================
+   Inputs & Selects
+   ========================================================================== */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.875rem;
+    color: #334155;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar total */
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Efek saat input sedang diklik/diisi */
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); /* Ring biru pudar */
+}
+
+/* Styling khusus input file */
+.form-group input[type="file"] {
+    font-size: 0.875rem;
+    color: #475569;
+    padding: 8px 0;
+}
+
+/* ==========================================================================
+   Validasi Error
+   ========================================================================== */
+/* Jika input memiliki error */
+.form-group input.is-invalid,
+.form-group select.is-invalid {
+    border-color: #ef4444;
+}
+
+.form-group input.is-invalid:focus,
+.form-group select.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15); /* Ring merah pudar */
+}
+
+/* Pesan error di bawah input */
+.error-msg {
+    display: block;
+    font-size: 0.75rem;
+    color: #ef4444;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Form Actions (Tombol Simpan & Batal)
+   ========================================================================== */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    padding-top: 20px;
+}
+
+/* Tombol Batal */
+.btn-secondary {
+    background-color: #ffffff;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
+
+.btn-secondary:hover {
+    background-color: #f8fafc;
+    color: #0f172a;
+    border-color: #94a3b8;
+}
+
+.alert-success {
+    background-color: #22c55e;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+}

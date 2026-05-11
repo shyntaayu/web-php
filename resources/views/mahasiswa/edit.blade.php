@@ -1,5 +1,5 @@
 {{-- File: resources/views/mahasiswa/edit.blade.php --}}
-@extends('layouts.app')
+@extends('layouts.public')
 @section('title', 'Edit Mahasiswa')
 
 @section('content')
