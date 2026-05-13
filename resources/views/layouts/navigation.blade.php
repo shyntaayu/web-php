@@ -27,6 +27,9 @@
                     <x-nav-link :href="url('/mahasiswa')" :active="request()->is('mahasiswa*')">
                         Mahasiswa
                     </x-nav-link>
+                    <button id="toggle-tema" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <span id="ikon-tema">🌙</span>
+                    </button>
                 </div>
             </div>
 

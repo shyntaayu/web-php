@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\JsonResponse;
+
 
 class MahasiswaController extends Controller
 {
@@ -127,5 +129,64 @@ class MahasiswaController extends Controller
         }
 
         return redirect()->back()->with('error', 'Tidak ada data di tong sampah.');
+    }
+
+    // Return JSON — untuk Fetch/AJAX
+    public function apiIndex(Request $request): JsonResponse
+    {
+        $query = Mahasiswa::query();
+
+        // Filter pencarian jika ada parameter 'q'
+        if ($request->filled('q')) {
+            $q = $request->q;
+            $query->where(function ($query) use ($q) {
+                $query->where('nama',    'like', "%{$q}%")
+                    ->orWhere('nim',   'like', "%{$q}%")
+                    ->orWhere('jurusan', 'like', "%{$q}%");
+            });
+        }
+
+        $mahasiswas = $query->orderBy('nama')->paginate(10);
+
+        return response()->json([
+            'success' => true,
+            'data'    => $mahasiswas->items(),
+            'total'   => $mahasiswas->total(),
+            'pages'   => $mahasiswas->lastPage(),
+        ]);
+    }
+
+    public function apiShow(int $id): JsonResponse
+    {
+        $mahasiswa = Mahasiswa::findOrFail($id);
+        return response()->json(['success' => true, 'data' => $mahasiswa]);
+    }
+
+    public function apiStore(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'nama'  => 'required|string|max:100',
+            'nim'   => 'required|string|unique:mahasiswas',
+            'prodi' => 'required|string',
+        ]);
+
+        $mahasiswa = Mahasiswa::create($validated);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Mahasiswa berhasil ditambahkan',
+            'data'    => $mahasiswa,
+        ], 201); // HTTP 201 Created
+    }
+
+    public function apiDestroy(int $id): JsonResponse
+    {
+        $mahasiswa = Mahasiswa::findOrFail($id);
+        $mahasiswa->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Mahasiswa berhasil dihapus',
+        ]);
     }
 }

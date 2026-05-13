@@ -374,3 +374,187 @@ body {
 .daftar-info .btn-search:hover {
     background-color: #1e40af;
 }
+
+/* =========================================
+   TEMA DARK MODE (Berlaku saat <html class="dark">)
+   ========================================= */
+
+/* Latar Belakang & Teks Dasar */
+html.dark body {
+    background-color: #111827; /* Tailwind Gray-900 */
+    color: #e5e7eb; /* Tailwind Gray-200 */
+}
+
+/* Mengubah Semua Card & Sidebar */
+html.dark .card,
+html.dark .stat-card {
+    background-color: #1f2937; /* Tailwind Gray-800 */
+    border: 1px solid #374151; /* Tailwind Gray-700 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+/* Heading dan Paragraf */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4 {
+    color: #f9fafb; /* Putih cerah */
+}
+
+html.dark p,
+html.dark label,
+html.dark .daftar-info {
+    color: #d1d5db; /* Abu-abu terang */
+}
+
+/* Form Input & Select */
+html.dark .form-input,
+html.dark .search-input {
+    background-color: #374151;
+    border: 1px solid #4b5563;
+    color: #f9fafb;
+}
+
+html.dark .form-input:focus,
+html.dark .search-input:focus {
+    border-color: #3b82f6; /* Biru terang saat diklik */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Styling Tabel */
+html.dark .data-table {
+    border-color: #374151;
+}
+
+html.dark .data-table th {
+    background-color: #374151;
+    color: #f3f4f6;
+    border-bottom: 2px solid #4b5563;
+}
+
+html.dark .data-table td {
+    border-bottom: 1px solid #374151;
+    color: #d1d5db;
+}
+
+html.dark .data-table tbody tr:hover {
+    background-color: #374151; /* Efek hover baris tabel */
+}
+
+/* Checkbox Filter */
+html.dark .custom-checkbox {
+    color: #d1d5db;
+}
+
+/* Footer */
+html.dark .main-footer {
+    background-color: #111827;
+    border-top: 1px solid #374151;
+}
+
+html.dark .footer-col h4 {
+    color: #f3f4f6;
+}
+
+html.dark .footer-col p,
+html.dark .footer-col ul li a {
+    color: #9ca3af;
+}
+
+html.dark .footer-col ul li a:hover {
+    color: #60a5fa;
+}
+
+/* =========================================
+   OVERRIDE INLINE STYLE (Widget BMKG)
+   ========================================= */
+/* Karena Widget BMKG menggunakan style="" di HTML, kita harus memaksa override menggunakan !important */
+
+/* Menggelapkan Lencana "Hari Ini" */
+html.dark div[style*="background: #e0f2fe"] {
+    background-color: #1e3a8a !important; /* Biru gelap */
+    color: #bfdbfe !important; /* Biru terang */
+}
+
+/* Menggelapkan Kotak per Jam BMKG */
+html.dark div[style*="background: #f8fafc"] {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+}
+
+/* Mengubah warna teks Jam (Hitam -> Putih) */
+html.dark p[style*="color: #0f172a"] {
+    color: #f9fafb !important;
+}
+
+/* Mengubah warna teks Deskripsi (Abu tua -> Abu muda) */
+html.dark p[style*="color: #475569"] {
+    color: #d1d5db !important;
+}
+
+/* Kotak kecil Kelembapan Air */
+html.dark div[style*="background: #e2e8f0"] {
+    background-color: #4b5563 !important;
+    color: #e5e7eb !important;
+}
+
+/* =========================================
+   DARK MODE - NAVBAR TAILWIND (Breeze)
+   ========================================= */
+
+/* Latar Belakang & Garis Bawah Nav */
+html.dark nav.bg-white {
+    background-color: #1f2937 !important; /* gray-800 */
+    border-bottom-color: #374151 !important; /* gray-700 */
+}
+
+/* Teks Link & Logo (Desktop) */
+html.dark nav .text-gray-800,
+html.dark nav .text-gray-900 {
+    color: #f9fafb !important; /* putih */
+}
+
+/* Teks yang agak redup (Dropdown & Nama User) */
+html.dark nav .text-gray-500,
+html.dark nav .text-gray-600 {
+    color: #9ca3af !important; /* gray-400 */
+}
+
+/* Efek sentuh / hover teks */
+html.dark nav a:hover,
+html.dark nav button:hover {
+    color: #f3f4f6 !important;
+}
+
+/* Kotak Dropdown Desktop */
+html.dark nav .bg-white.ring-1 {
+    background-color: #374151 !important; /* gray-700 */
+    border: 1px solid #4b5563 !important;
+}
+
+/* Efek Hover di dalam Dropdown */
+html.dark nav .hover\:bg-gray-100:hover,
+html.dark nav .focus\:bg-gray-100:focus {
+    background-color: #4b5563 !important;
+    color: #ffffff !important;
+}
+
+/* -----------------------------------------
+   Menu Mobile (Responsive)
+   ----------------------------------------- */
+
+/* Teks dan Garis Link Aktif di Mobile */
+html.dark nav .bg-indigo-50 {
+    background-color: rgba(67, 56, 202, 0.3) !important; /* transparan indigo */
+    color: #818cf8 !important;
+    border-left-color: #818cf8 !important;
+}
+
+html.dark nav .text-indigo-700 {
+    color: #818cf8 !important;
+}
+
+/* Garis pemisah di menu mobile */
+html.dark nav .border-gray-200 {
+    border-color: #374151 !important;
+}

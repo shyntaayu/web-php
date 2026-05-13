@@ -4,12 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'SIJAM - Sistem Informasi Jadwal Mengajar')</title>
     <!-- Asumsi file CSS ada di folder public/css/style-proyek.css -->
     <link rel="stylesheet" href="{{ asset('css/style-proyek.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('css/style-tasklist.css') }}">
     @stack('styles')
+
+    {{-- Di <head> layout -- terapkan tema sebelum render untuk hindari flash --}}
+    <script>
+        // Baca cookie tema SEBELUM body render (mencegah 'flash of unstyled content')
+        (function() {
+            function getCookie(name) {
+                const c = document.cookie.split(';').find(c => c.trim().startsWith(name + '='));
+                return c ? decodeURIComponent(c.split('=')[1]) : null;
+            }
+            if (getCookie('tema') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
 </head>
 
 <body>

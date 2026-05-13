@@ -7,6 +7,21 @@
 <div class="main-content">
     <div class="page-header">
         <h1>Data Mahasiswa</h1>
+
+        <div class="mb-0">
+            <input type="text" id="search"
+                placeholder="Cari nama, NIM, atau prodi..."
+                class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <span id="status" class="text-sm text-gray-400 mt-1 block"></span>
+        </div>
+
+        {{-- Loading indicator --}}
+        <div id="loading" class="hidden text-center py-8">
+            <div class="animate-spin inline-block w-8 h-8 border-4 border-blue-500 rounded-full border-t-transparent"></div>
+            <p class="text-gray-500 mt-2">Mencari...</p>
+        </div>
+
+
         <a href="{{ route('mahasiswa.create') }}" class="btn-primary">
             + Tambah Mahasiswa
         </a>
@@ -21,7 +36,7 @@
         </form>
     </div>
 
-    <table class="tabel-data">
+    <table class="tabel-data" id="hasil">
         <thead>
             <tr>
                 <th>No</th>
@@ -64,6 +79,7 @@
 @endsection
 
 @push('scripts')
+<script src="{{ asset('js/script-mahasiswa.js') }}"></script>
 <script>
     // Konfirmasi sebelum hapus
     document.querySelectorAll('form[method=DELETE]').forEach(form => {
